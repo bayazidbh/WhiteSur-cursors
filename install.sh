@@ -4,17 +4,14 @@ ROOT_UID=0
 DEST_DIR=
 
 # Destination directory
-if [ "$UID" -eq "$ROOT_UID" ]; then
-  DEST_DIR="/usr/share/icons"
-else
-  DEST_DIR="$HOME/.local/share/icons"
-fi
+DEST_DIR="$PWD/usr/share/icons"
+SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if [ -d "$DEST_DIR/WhiteSur-cursors" ]; then
   rm -r "$DEST_DIR/WhiteSur-cursors"
 fi
 
-cp -pr dist $DEST_DIR/WhiteSur-cursors
+cp -pr $SRC_DIR/dist $DEST_DIR/WhiteSur-cursors
 
 echo "Finished..."
 
